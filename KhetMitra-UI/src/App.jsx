@@ -15,7 +15,7 @@ import UserProfile from './pages/UserProfile';
 import EditProfile from "./pages/EditProfile";
 import Daam from "./pages/Daam";
 // import KMStudio from './pages/KM-Studio';
-// import Shop from './pages/Shop';
+import Shop from './pages/Shop';
 // import WeatherPage from "./pages/WeatherPage";
 import Forecast from "./pages/Forecast";
 import Dashboard from "./pages/Dashboard";
@@ -41,7 +41,7 @@ function App() {
         <Route path="/editProfile" element={<EditProfile />} />
         <Route path="/daam" element={<Daam />} />
         {/* <Route path="/kmstudio" element={<KMStudio />} /> */}
-        {/* <Route path="/shopping" element={<Shop />} /> */}
+        <Route path="/shopping" element={<Shop />} />
         {/* <Route path="/weather" element={<WeatherPage />} /> */}
         <Route path="/forecast" element={<Forecast />} /> 
         <Route path="/" element={<Dashboard />} />
