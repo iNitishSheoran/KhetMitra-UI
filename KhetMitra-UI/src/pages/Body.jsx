@@ -14,7 +14,7 @@ import Floating from "../components/Floating";
 import Diagnose from "./Diagnose";
 import Footer from "../components/Footer";
 import WeatherWidget from "../components/WeatherWidget";
-// import FarmSizeCard from "../components/FarmSizeCard";
+import FarmSizeCard from "../components/FarmSizeCard";
 import useWeatherByLocation from "../hooks/useWeatherByLocation";
 
 const banners = [Banner1, Banner2, Banner3, Banner4];
@@ -88,7 +88,7 @@ function Body() {
 
             {/* ✅ Weather + Farm Summary */}
             <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mt-6">
-              {/* <FarmSizeCard /> */}
+              <FarmSizeCard />
               {loading ? (
                 <p className="text-gray-500">📍 Detecting location...</p>
               ) : weatherData ? (

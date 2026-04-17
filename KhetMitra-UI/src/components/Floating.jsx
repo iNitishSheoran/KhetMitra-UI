@@ -13,7 +13,7 @@ export default function Floating() {
   const [feedback, setFeedback] = useState("");
   const [rating, setRating] = useState(0);
 
-  const [isOn, setIsOn] = useState(false); // ✅ Motor Toggle State
+  const [isOn, setIsOn] = useState(false);
 
   const chatEndRef = useRef(null);
   const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY;
@@ -29,21 +29,50 @@ export default function Floating() {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [chatMessages, loading]);
 
+  // ✅ AGRICULTURE DOMAIN FILTER KEYWORDS
+  const isAgricultureQuery = (text) => {
+    const keywords = [
+      "crop","farming","agriculture","kisan","fasal","soil","irrigation","fertilizer",
+      "pesticide","tractor","weather","seed","harvest","mandi","dairy","livestock",
+      "organic","compost","weed","water","plant","yield","farm","agri"
+    ];
+    return keywords.some((word) =>
+      text.toLowerCase().includes(word)
+    );
+  };
 
   const sendMessage = async () => {
     if (!chatInput.trim()) return;
+
     const userMessage = { role: "user", content: chatInput };
     setChatMessages((prev) => [...prev, userMessage]);
     setChatInput("");
+
+    // ✅ BLOCK NON-AGRICULTURE QUESTIONS
+    if (!isAgricultureQuery(chatInput)) {
+      let msg =
+        language === "hi"
+          ? "❌ यह प्रश्न कृषि से संबंधित नहीं है। कृपया खेती से जुड़ा सवाल पूछें।"
+          : language === "ml"
+          ? "❌ ഇത് കാർഷികവുമായി ബന്ധപ്പെട്ട ചോദ്യം അല്ല. ദയവായി കൃഷിയുമായി ബന്ധപ്പെട്ട ചോദ്യം ചോദിക്കുക."
+          : "❌ This question is not related to agriculture. Please ask farming-related queries.";
+
+      setChatMessages((prev) => [
+        ...prev,
+        { role: "assistant", content: msg },
+      ]);
+      return;
+    }
+
     setLoading(true);
 
     try {
       const systemInstruction =
         language === "ml"
-          ? "You are KhetMitra, a helpful farming assistant. Respond in Malayalam."
+          ? "You are KhetMitra, a strict agriculture assistant. ONLY answer farming, crops, soil, irrigation, fertilizers, weather, livestock related questions. If question is unrelated, refuse politely. Respond in Malayalam."
           : language === "hi"
-          ? "You are KhetMitra, a helpful farming assistant. Respond in Hindi."
-          : "You are KhetMitra, a helpful farming assistant. Respond in English.";
+          ? "You are KhetMitra, a strict agriculture assistant. केवल खेती, फसल, मिट्टी, सिंचाई, खाद, मौसम और पशुपालन से जुड़े प्रश्नों का ही उत्तर दें। अन्य प्रश्नों को मना करें। हिंदी में उत्तर दें।"
+          : "You are KhetMitra, a strict agriculture assistant. ONLY answer farming-related queries like crops, soil, irrigation, fertilizers, livestock. Refuse unrelated questions. Respond in English.";
 
       const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
@@ -81,7 +110,6 @@ export default function Floating() {
     }
   };
 
-
   const handleSubmitFeedback = () => {
     alert(
       `🙏 धन्यवाद ${name || "Farmer"}!\nFeedback: ${feedback}\nRating: ${rating}⭐`
@@ -92,15 +120,11 @@ export default function Floating() {
     setIsFeedbackOpen(false);
   };
 
-
   return (
     <>
-      {/* 🌟 Floating Buttons */}
       <div className="fixed bottom-6 right-1 flex flex-col items-center mr-0 gap-6 z-50">
 
-        {/* ✅ MOTOR TOGGLE IMAGE + BUTTON ABOVE ASK KHETMITRA */}
         <div className="flex flex-col items-center">
-
           <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsOn(!isOn)}
@@ -110,10 +134,7 @@ export default function Floating() {
             {isOn ? "Turn OFF Motor" : "Turn ON Motor"}
           </motion.button>
         </div>
-        {/* ✅ END OF ADDED CODE */}
 
-
-        {/* Chatbot Button */}
         <motion.div
           className="relative flex flex-col items-center cursor-pointer"
           initial={{ opacity: 0, scale: 0.8 }}
@@ -130,48 +151,25 @@ export default function Floating() {
           </p>
         </motion.div>
 
-        {/* Call / Share / Feedback */}
         <div className="flex flex-col gap-3">
-          <button
-            onClick={handleCall}
-            className="w-14 h-14 rounded-full bg-yellow-500 flex items-center justify-center shadow-lg hover:scale-110 transition"
-          >
+          <button onClick={handleCall} className="w-14 h-14 rounded-full bg-yellow-500 flex items-center justify-center shadow-lg hover:scale-110 transition">
             <Phone className="text-white w-6 h-6" />
           </button>
 
-          <button
-            onClick={handleShare}
-            className="w-14 h-14 rounded-full bg-blue-600 flex items-center justify-center shadow-lg hover:scale-110 transition"
-          >
+          <button onClick={handleShare} className="w-14 h-14 rounded-full bg-blue-600 flex items-center justify-center shadow-lg hover:scale-110 transition">
             <Share2 className="text-white w-6 h-6" />
           </button>
 
-          <button
-            onClick={() => setIsFeedbackOpen(true)}
-            className="w-14 h-14 rounded-full bg-green-600 flex items-center justify-center shadow-lg hover:scale-110 transition"
-          >
+          <button onClick={() => setIsFeedbackOpen(true)} className="w-14 h-14 rounded-full bg-green-600 flex items-center justify-center shadow-lg hover:scale-110 transition">
             <ThumbsUp className="text-white w-6 h-6" />
           </button>
         </div>
       </div>
 
-
-      {/* Chat Modal */}
       <AnimatePresence>
         {isChatOpen && (
-          <motion.div
-            className="fixed inset-0 flex items-center justify-center bg-black/40 z-50"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <motion.div
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.8 }}
-              transition={{ duration: 0.3 }}
-              className="bg-white p-6 rounded-3xl shadow-2xl w-[90%] max-w-md flex flex-col h-[75vh] border border-purple-200"
-            >
+          <motion.div className="fixed inset-0 flex items-center justify-center bg-black/40 z-50">
+            <motion.div className="bg-white p-6 rounded-3xl shadow-2xl w-[90%] max-w-md flex flex-col h-[75vh] border border-purple-200">
               <h2 className="text-2xl font-bold text-center text-purple-700 mb-2">
                 🤖 KhetMitra Chatbot
               </h2>
@@ -182,15 +180,10 @@ export default function Floating() {
                   { code: "hi", label: "Hindi" },
                   { code: "en", label: "English" },
                 ].map((lang) => (
-                  <button
-                    key={lang.code}
-                    onClick={() => setLanguage(lang.code)}
-                    className={`px-3 py-1 rounded-full text-sm font-semibold transition ${
-                      language === lang.code
-                        ? "bg-purple-600 text-white"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                    }`}
-                  >
+                  <button key={lang.code} onClick={() => setLanguage(lang.code)}
+                    className={`px-3 py-1 rounded-full text-sm font-semibold ${
+                      language === lang.code ? "bg-purple-600 text-white" : "bg-gray-100"
+                    }`}>
                     {lang.label}
                   </button>
                 ))}
@@ -198,22 +191,13 @@ export default function Floating() {
 
               <div className="flex-1 overflow-y-auto border p-3 rounded-xl bg-gradient-to-b from-gray-50 to-gray-100 space-y-3 shadow-inner">
                 {chatMessages.map((msg, i) => (
-                  <div
-                    key={i}
-                    className={`p-3 rounded-2xl text-sm whitespace-pre-wrap shadow ${
-                      msg.role === "user"
-                        ? "bg-purple-100 self-end ml-auto"
-                        : "bg-green-100 self-start"
-                    }`}
-                  >
+                  <div key={i} className={`p-3 rounded-2xl text-sm ${
+                    msg.role === "user" ? "bg-purple-100 ml-auto" : "bg-green-100"
+                  }`}>
                     {msg.content}
                   </div>
                 ))}
-                {loading && (
-                  <p className="text-center text-gray-500 animate-pulse">
-                    ✍️ Typing...
-                  </p>
-                )}
+                {loading && <p className="text-center">✍️ Typing...</p>}
                 <div ref={chatEndRef} />
               </div>
 
@@ -229,21 +213,14 @@ export default function Floating() {
                       ? "अपना प्रश्न लिखें..."
                       : "Type your question..."
                   }
-                  className="flex-1 border rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-purple-400 shadow-inner"
+                  className="flex-1 border rounded-xl p-2"
                 />
-                <button
-                  onClick={sendMessage}
-                  disabled={loading}
-                  className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 rounded-xl shadow hover:scale-105 transition"
-                >
+                <button onClick={sendMessage} className="bg-purple-600 text-white px-4 rounded-xl">
                   <Send className="w-5 h-5" />
                 </button>
               </div>
 
-              <button
-                onClick={() => setIsChatOpen(false)}
-                className="mt-3 text-sm text-gray-500 hover:text-gray-700 underline text-center"
-              >
+              <button onClick={() => setIsChatOpen(false)} className="mt-3 text-sm text-center">
                 ❌ Close Chat
               </button>
             </motion.div>

@@ -16,10 +16,10 @@ import EditProfile from "./pages/EditProfile";
 import Daam from "./pages/Daam";
 import KMStudio from './pages/KM-Studio';
 import Shop from './pages/Shop';
-// import WeatherPage from "./pages/WeatherPage";
+import WeatherPage from "./pages/WeatherPage";
 import Forecast from "./pages/Forecast";
 import Dashboard from "./pages/Dashboard";
-// import FarmDetail from "./pages/FarmDetail";
+import FarmDetail from "./pages/FarmDetail";
 
 // ✅ Components
 import WeatherButton from "./components/WeatherButton";
@@ -42,10 +42,10 @@ function App() {
         <Route path="/daam" element={<Daam />} />
         <Route path="/kmstudio" element={<KMStudio />} />
         <Route path="/shopping" element={<Shop />} />
-        {/* <Route path="/weather" element={<WeatherPage />} /> */}
+        <Route path="/weather" element={<WeatherPage />} />
         <Route path="/forecast" element={<Forecast />} /> 
         <Route path="/" element={<Dashboard />} />
-        {/* <Route path="/farm-detail" element={<FarmDetail />} /> */}
+        <Route path="/farm-detail" element={<FarmDetail />} />
       </Routes>
     </div>
   );
