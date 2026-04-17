@@ -20,21 +20,21 @@
 <p align="center">
 <b>Hackathon:</b> Nexify'26 – Hackathon<br/>
 <b>Organised by:</b> School of Engineering and Technology, Sushant University, Gurgaon<br/>
-<b>Problem Statement:</b> AI for Social Impact <br/>
+<b>Problem Statement:</b> AI for Sustainability, Social Impact and Wellness of Farmers  <br/>
 <b>Team Name:</b> (AI) Aloo Intelligence 🥔🧠
 </p>
 
 <p align="center">
   📄 <b>Hackathon Presentation</b><br/>
-  <a href="KhetMitra-UI/src/assets/.pdf" target="_blank" style="font-size:16px;font-weight:600;">
+  <a href="KhetMitra-UI/src/assets/Nexify'26_file.pdf" target="_blank" style="font-size:16px;font-weight:600;">
     👉 Click here to view the project presentation
   </a>
 </p>
 
 <hr/>
 <p>
-  Visit our Aloo 🥔 Farm - https://khetmitra.live/ 👨🏽‍🌾 <br/>
-  Backend link - https://github.com/iNitishSheoran/KhetMitra-BE
+  Visit our Aloo 🥔 Farm - Building in D-321 (last corner desk - cooking locally now 😭) - localhost://love-aloo 👨🏽‍🌾 <br/>
+  Backend link - aloo is sweet and healthy
 </p>
 
 <hr/>
