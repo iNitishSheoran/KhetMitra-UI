@@ -118,7 +118,7 @@ Real-time Sensors & Environment Alerts
 </td>
 
 <td width="35%" align="center" valign="middle">
-  <img src="khetmitra/src/assets/satellite.png" width="90" style="margin-bottom:14px;" /><br/>
+  <img src="KhetMitra-UI/src/assets/satellite.png" width="90" style="margin-bottom:14px;" /><br/>
   <img src="khetmitra/src/assets/NPK.png" width="90" />
 </td>
 </tr>
