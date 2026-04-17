@@ -1,6 +1,6 @@
 import React from "react";
 import WeatherCard from "../components/WeatherCard";
-import FarmSizeCard from "../components/FarmSizeCard";
+// import FarmSizeCard from "../components/FarmSizeCard";
 import useWeatherByLocation from "../hooks/useWeatherByLocation";
 
 export default function Dashboard() {
@@ -15,7 +15,7 @@ export default function Dashboard() {
 
       <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
         <WeatherCard weather={weather} />
-        <FarmSizeCard size={farmSize} cropDefault="wheat" />
+        {/* <FarmSizeCard size={farmSize} cropDefault="wheat" /> */}
       </div>
     </div>
   );
