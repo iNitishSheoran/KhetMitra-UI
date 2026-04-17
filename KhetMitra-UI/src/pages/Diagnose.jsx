@@ -154,28 +154,28 @@ export default function Diagnose() {
 
 
   // ✅ Gemini API call
-const callGroqForRecommendation = async (data) => {
-  setLoadingRec(true);
-  try {
-    const res = await fetch(AI_API_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
+  const callGroqForRecommendation = async (data) => {
+    setLoadingRec(true);
+    try {
+      const res = await fetch(AI_API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
 
-    const json = await res.json();
-    console.log("🟢 Groq Response:", json);
+      const json = await res.json();
+      console.log("🟢 Groq Response:", json);
 
-    setRecommendation(
-      json?.text || "⚠️ Local Kisan Mitra se salah lo."
-    );
-  } catch (err) {
-    console.error("Groq fetch error:", err);
-    setRecommendation("⚠️ Local Kisan Mitra se salah lo.");
-  } finally {
-    setLoadingRec(false);
-  }
-};
+      setRecommendation(
+        json?.text || "⚠️ Local Kisan Mitra se salah lo."
+      );
+    } catch (err) {
+      console.error("Groq fetch error:", err);
+      setRecommendation("⚠️ Local Kisan Mitra se salah lo.");
+    } finally {
+      setLoadingRec(false);
+    }
+  };
 
 
   // ✅ UI
@@ -293,6 +293,11 @@ const callGroqForRecommendation = async (data) => {
           <p className="text-lg text-emerald-200 mt-2">
             वास्तविक समय के सेंसर और पर्यावरण अलर्ट (Real-time Sensors & Environment Alerts)
           </p>
+          {sensorData?.createdAtIST && (
+            <p className="text-sm text-gray-400 mt-1 italic">
+              🕒 Last Updated: {sensorData.createdAtIST}
+            </p>
+          )}
           {
             isFetchingData ? (
               <button
