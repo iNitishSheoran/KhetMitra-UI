@@ -58,7 +58,7 @@ not just for a demo or presentation.
 </td>
 
 <td width="45%" align="center" valign="middle">
-<img src="khetmitra/src/assets/1111.png" style="max-width:420px;width:100%;border-radius:12px;" />
+<img src="KhetMitra-UI/src/assets/1111.png" style="max-width:420px;width:100%;border-radius:12px;" />
 </td>
 </tr>
 </table>
@@ -83,7 +83,7 @@ not just for a demo or presentation.
 </td>
 
 <td width="45%" align="center" valign="middle">
-<img src="khetmitra/src/assets/2222.png"
+<img src="KhetMitra-UI/src/assets/2222.png"
      style="max-width:420px;width:100%;border-radius:12px;" />
 </td>
 </tr>
