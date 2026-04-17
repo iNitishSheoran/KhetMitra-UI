@@ -119,7 +119,7 @@ Real-time Sensors & Environment Alerts
 
 <td width="35%" align="center" valign="middle">
   <img src="KhetMitra-UI/src/assets/satellite.png" width="90" style="margin-bottom:14px;" /><br/>
-  <img src="khetmitra/src/assets/NPK.png" width="90" />
+  <img src="KhetMitra-UI/src/assets/NPK.png" width="90" />
 </td>
 </tr>
 </table>
@@ -146,7 +146,7 @@ Real-time Sensors & Environment Alerts
 </td>
 
 <td width="40%" align="center" valign="middle">
-<img src="khetmitra/src/assets/3333.png" style="max-width:380px;width:100%;border-radius:12px;" />
+<img src="KhetMitra-UI/src/assets/3333.png" style="max-width:380px;width:100%;border-radius:12px;" />
 </td>
 </tr>
 </table>
@@ -174,7 +174,7 @@ Real-time Sensors & Environment Alerts
 </td>
 
 <td width="40%" align="center" valign="middle">
-<img src="khetmitra/src/assets/4444.png" style="max-width:380px;width:100%;border-radius:12px;" />
+<img src="KhetMitra-UI/src/assets/4444.png" style="max-width:380px;width:100%;border-radius:12px;" />
 </td>
 </tr>
 </table>
@@ -197,7 +197,7 @@ Real-time Sensors & Environment Alerts
 </td>
 
 <td width="45%" align="center" valign="middle">
-<img src="khetmitra/src/assets/5555.png" style="max-width:420px;width:100%;border-radius:12px;" />
+<img src="KhetMitra-UI/src/assets/5555.png" style="max-width:420px;width:100%;border-radius:12px;" />
 </td>
 </tr>
 </table>
@@ -231,7 +231,7 @@ Select a crop → View growth stages, irrigation plan & best practices 🌱
 
 <td width="45%" align="center">
 
-<img src="khetmitra/src/assets/6666.png"
+<img src="KhetMitra-UI/src/assets/6666.png"
      style="max-width:420px;width:100%;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);margin-bottom:12px;"/>
 
 <!--<img src="assets/7777.png"
@@ -267,7 +267,7 @@ to view live mandi prices 📊
 </td>
 
 <td width="45%" align="center">
-<img src="khetmitra/src/assets/888.png"
+<img src="KhetMitra-UI/src/assets/888.png"
      style="max-width:420px;width:100%;border-radius:12px;
      box-shadow:0 4px 12px rgba(0,0,0,0.08);"/>
 <div style="font-size:13px;color:#555;margin-top:6px;">
@@ -297,7 +297,7 @@ Easy steps to use KhetMitra kits 🚜
 </td>
 
 <td width="45%" align="center">
-<img src="khetmitra/src/assets/999.png" style="max-width:420px;width:100%;border-radius:12px;" />
+<img src="KhetMitra-UI/src/assets/999.png" style="max-width:420px;width:100%;border-radius:12px;" />
 </td>
 </tr>
 </table>
@@ -322,7 +322,7 @@ Easy steps to use KhetMitra kits 🚜
 </td>
 
 <td width="45%" align="center">
-<img src="khetmitra/src/assets/sell.png" style="max-width:420px;width:100%;border-radius:12px;"/>
+<img src="KhetMitra-UI/src/assets/sell.png" style="max-width:420px;width:100%;border-radius:12px;"/>
 </td>
 </tr>
 </table>
