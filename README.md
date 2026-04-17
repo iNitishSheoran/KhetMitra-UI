@@ -347,7 +347,7 @@ Easy steps to use KhetMitra kits 🚜
 </td>
 
 <td width="45%" align="center">
-<img src="khetmitra/src/assets/help.png" style="max-width:420px;width:100%;border-radius:12px;"/>
+<img src="KhetMitra-UI/src/assets/helpy.png" style="max-width:420px;width:100%;border-radius:12px;"/>
 </td>
 </tr>
 </table>
@@ -383,7 +383,7 @@ Easy steps to use KhetMitra kits 🚜
 </td>
 
 <td width="45%" align="center" valign="middle">
-<img src="khetmitra/src/assets/11.png"
+<img src="KhetMitra-UI/src/assets/11.png"
      style="max-width:420px;width:100%;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);" />
 </td>
 </tr>
@@ -414,7 +414,7 @@ Easy steps to use KhetMitra kits 🚜
 </td>
 
 <td width="45%" align="center" valign="middle">
-<img src="khetmitra/src/assets/00.png"
+<img src="KhetMitra-UI/src/assets/00.png"
      style="max-width:420px;width:100%;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);" />
 </td>
 </tr>
